@@ -1,0 +1,60 @@
+<h2>Where does personalization happen?</h2>
+<p class="subtitle">This is the most important architectural decision — it shapes everything else.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Frontend (Live Preview on Shopify)</h3>
+      <p>Customer types their name on the product page and sees a real-time preview of the personalized product. When they add to cart, the name is saved. After purchase, files are generated and sent to fulfillment.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Increases conversion — customers see exactly what they're getting</li>
+          <li>Catches typos before purchase</li>
+          <li>Premium, modern experience</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>More complex to build (Shopify storefront + backend)</li>
+          <li>Requires canvas/SVG rendering in browser</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Backend Only (Post-Order File Generation)</h3>
+      <p>Customer types their name at checkout (Shopify line item property). After the order is placed, your backend reads the order + name, generates all print files, and delivers them to you or a fulfillment partner.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Simpler to build — no browser rendering</li>
+          <li>Works with existing Shopify checkout flow</li>
+          <li>Full control over print quality</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>No live preview for customer</li>
+          <li>Errors caught after purchase</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Both — Preview + Production Files</h3>
+      <p>A lightweight preview on the product page (browser-rendered) plus a high-quality backend file generator triggered after purchase. Same template, two rendering contexts.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Best customer experience</li>
+          <li>Print-perfect files for fulfillment</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Most work to build</li>
+          <li>Two rendering pipelines to maintain</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
